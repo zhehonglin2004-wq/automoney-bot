@@ -1,21 +1,21 @@
-name: Run Ricardo Scraper Daily
+name: Ricardo Scraper täglich ausführen
 on:
   schedule:
-    - cron: "0 8 * * *"  # 每天瑞士时间9点自动运行
+    - cron: "0 8 * * *"
   workflow_dispatch:
 jobs:
-  scrape:
+  kratzen:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout-Repository
         uses: actions/checkout@v4
-      - name: Set up Python
+      - name: Python einrichten
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install dependencies
+      - name: Abhängigkeiten installieren
         run: |
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
-      - name: Run scraper
+      - name: Schaber laufen lassen
         run: python ricardo_scraper.py
